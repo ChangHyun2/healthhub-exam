@@ -1,0 +1,36 @@
+.mole-container {
+  width: 25%;
+  height: 25%;
+  position: relative;
+}
+
+.mole-cell {
+  margin: 2em;
+
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+
+  box-sizing: border-box;
+  border-radius: 20px;
+  border: 1px solid black;
+}
+
+.mole-up {
+  width: 100%;
+  height: 100%;
+  text-align: center;
+  background-color: green;
+  color: white;
+  border-radius: 20px;
+}
+
+.mole-fail {
+  width: 100%;
+  height: 100%;
+  text-align: center;
+  background-color: indianred;
+  border-radius: 20px;
+}
