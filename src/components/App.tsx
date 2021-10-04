@@ -15,7 +15,11 @@ function App() {
       <h1>React-A-Mole</h1>
       <p>`score: ${score}`</p> {/* TODO */}
       <div id="hh-newbie-exam">
-        <Mole onHit={onHit} />
+        {Array(16)
+          .fill(0)
+          .map((m) => (
+            <Mole onHit={onHit} />
+          ))}
       </div>
     </>
   );
