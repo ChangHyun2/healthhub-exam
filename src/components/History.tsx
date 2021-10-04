@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import "./History.scss";
 
 interface HistoryProps {
@@ -6,12 +6,11 @@ interface HistoryProps {
 }
 
 const History: React.FunctionComponent<HistoryProps> = (props) => {
-  const [moleId, setMoleId] = useState("");
-  //   <li key={`${moleId}/${i}`}>{[moleId, time].join("/")}</li>
+  const [filterValue, setFilterValue] = useState("");
 
   let list = (
     <ul>
-      {moleId === ""
+      {filterValue === ""
         ? props.hitTime
             .map((moleHitTime, i) => [String(i + 1), moleHitTime])
             .filter(([moleId, moleHitTime]) => moleHitTime.length)
@@ -28,9 +27,9 @@ const History: React.FunctionComponent<HistoryProps> = (props) => {
             .map(([moleId, time]) => (
               <li key={`${moleId}/${time}`}>{[moleId, time].join("/")}</li>
             ))
-        : 1 <= +moleId || +moleId <= 16
-        ? props.hitTime[+moleId - 1].map((time, i) => (
-            <li key={i}>{[moleId, time].join("/")}</li>
+        : 1 <= +filterValue || +filterValue <= 16
+        ? props.hitTime[+filterValue - 1].map((time, i) => (
+            <li key={i}>{[filterValue, time].join("/")}</li>
           ))
         : null}
     </ul>
@@ -43,8 +42,8 @@ const History: React.FunctionComponent<HistoryProps> = (props) => {
         Filter
         <input
           type="text"
-          value={moleId}
-          onChange={(e) => setMoleId(e.target.value)}
+          value={filterValue}
+          onChange={(e) => setFilterValue(e.target.value)}
         />
       </label>
       {list}
