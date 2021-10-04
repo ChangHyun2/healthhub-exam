@@ -10,7 +10,7 @@ const useMole: () => [boolean, () => void] = () => {
   };
 
   useEffect(() => {
-    !mole && setTimeout(() => setMole(true), 1 + 10 * Math.random());
+    !mole && setTimeout(() => setMole(true), 1000 * (1 + 10 * Math.random()));
   }, [mole]);
 
   return [mole, clearMole];
