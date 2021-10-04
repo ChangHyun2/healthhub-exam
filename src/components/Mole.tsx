@@ -7,19 +7,27 @@ interface MoleProps {
   id: number;
 }
 const Mole: React.FunctionComponent<MoleProps> = (props) => {
-  const [mole, clearMole] = useMole();
+  const [{ mole, invalid }, clearMole] = useMole();
   const { onHit, id } = props;
 
   const hitMole = useCallback(() => {
+    if (invalid) {
+      return;
+    }
+
     clearMole();
     onHit(id);
-  }, [onHit, clearMole, id]);
+  }, [onHit, clearMole, id, invalid]);
 
-  const content = mole && (
-    <div className="mole-up" onClick={hitMole}>
-      Mole!
+  const content = invalid ? (
+    <div className="mole-fail" onClick={hitMole}>
+      invalid
     </div>
-  );
+  ) : mole ? (
+    <div className="mole-up" onClick={hitMole}>
+      mole!
+    </div>
+  ) : null;
 
   return (
     <div className="mole-container">
